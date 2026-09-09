@@ -1,0 +1,21 @@
+/* ARC startup: concentric scan arcs and a segmented production signal. */
+.arc-orbit-loader{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;overflow:hidden;isolation:isolate;background:#060e13;pointer-events:none;transition:opacity .5s ease,visibility .5s;animation:arc-loader-failsafe .5s ease 5.5s forwards}
+.arc-orbit-loader::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 45%,#115d6238,transparent 57%),linear-gradient(#39d9ce05 1px,transparent 1px),linear-gradient(90deg,#39d9ce05 1px,transparent 1px);background-size:auto,56px 56px,56px 56px;mask-image:radial-gradient(ellipse,#000,transparent 80%)}
+.arc-orbit-loader::after{content:"";position:absolute;width:min(540px,94vw);height:1px;background:linear-gradient(90deg,transparent,#5be7dd70,transparent);top:calc(50% + 120px);transform:scaleX(0);animation:arc-signal-build 1s .15s ease forwards}
+.arc-orbit-loader.is-hidden{opacity:0;visibility:hidden}
+.arc-orbit-loader-mark{position:relative;display:grid;place-items:center;width:min(440px,88vw);height:280px}
+.arc-orbit-loader-mark::before,.arc-orbit-loader-ring{content:"";position:absolute;width:270px;height:270px;border-radius:50%;border:1px solid #53e4df15;border-top:2px solid #57e6dc;border-bottom:2px solid #348998;box-shadow:0 0 24px #25cfc810;animation:arc-scan-turn 2.8s cubic-bezier(.4,0,.2,1) infinite}
+.arc-orbit-loader-ring{width:310px;height:310px;border:1px dashed #6ea4d52b;border-right:2px solid #7199edaa;animation:arc-scan-turn 4s linear reverse infinite}
+.arc-orbit-loader-mark::after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:#91fff2;box-shadow:0 0 16px #50efde;top:2px;animation:arc-node-light .65s ease-in-out infinite alternate}
+.arc-orbit-loader-mark img{position:relative;z-index:1;width:min(330px,76vw);height:auto;max-height:180px;object-fit:contain;filter:drop-shadow(0 0 12px #29dedb30);animation:arc-logo-resolve .85s cubic-bezier(.16,1,.3,1) both}
+.arc-orbit-loader-name{color:#9ec6ca;font:500 12px/1.5 Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:0 16px;animation:arc-caption-in .5s .3s both}
+.arc-orbit-loader-line{position:relative;width:168px;height:4px;background:#233840;mask-image:repeating-linear-gradient(90deg,#000 0 22px,transparent 22px 28px);overflow:hidden}
+.arc-orbit-loader-line::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#218d96,#63eddf 75%,#c9fff6);transform-origin:left;animation:arc-signal-build 1.05s steps(6,end) .1s both}
+@keyframes arc-scan-turn{from{transform:rotate(-35deg)}to{transform:rotate(325deg)}}
+@keyframes arc-logo-resolve{from{opacity:0;transform:translateY(12px) scale(.94);filter:blur(5px)}to{opacity:1;transform:none;filter:drop-shadow(0 0 12px #29dedb30)}}
+@keyframes arc-node-light{to{opacity:.3;transform:scale(.7)}}
+@keyframes arc-caption-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes arc-signal-build{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes arc-loader-failsafe{to{opacity:0;visibility:hidden}}
+@media(max-width:480px){.arc-orbit-loader-mark{height:245px}.arc-orbit-loader-mark::before{width:220px;height:220px}.arc-orbit-loader-ring{width:250px;height:250px}.arc-orbit-loader-mark img{width:72vw}.arc-orbit-loader{gap:18px}}
+@media(prefers-reduced-motion:reduce){.arc-orbit-loader{display:none}}
