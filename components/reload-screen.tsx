@@ -1,40 +1,54 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import BrandLogo from '@/components/brand-logo';
 import '@/app/reload.css';
 
 export default function ReloadScreen() {
   const [phase, setPhase] = useState('loading');
+
   useEffect(() => {
-    const started = performance.now();
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let scheduled = false;
+    let cancelled = false;
     let fade: ReturnType<typeof setTimeout>;
     let remove: ReturnType<typeof setTimeout>;
+
+    // Count startup time too, so React does not restart the loading delay.
     const finish = () => {
-      if (scheduled) return;
-      scheduled = true;
-      fade = setTimeout(() => {
-        setPhase('hidden');
-        remove = setTimeout(() => setPhase('done'), reduced ? 0 : 500);
-      }, Math.max(0, (reduced ? 0 : 1200) - (performance.now() - started)));
+      if (cancelled) return;
+      fade = setTimeout(
+        () => {
+          setPhase('hidden');
+          remove = setTimeout(() => setPhase('done'), reduced ? 0 : 200);
+        },
+        reduced ? 0 : Math.max(0, 800 - performance.now()),
+      );
     };
-    if (document.readyState === 'complete') finish();
-    else window.addEventListener('load', finish, { once: true });
-    const fallback = setTimeout(finish, 5000);
+
+    finish();
+
     return () => {
-      window.removeEventListener('load', finish);
-      clearTimeout(fallback); clearTimeout(fade); clearTimeout(remove);
+      cancelled = true;
+      clearTimeout(fade);
+      clearTimeout(remove);
     };
   }, []);
+
   if (phase === 'done') return null;
-  return <div className={`arc-orbit-loader ${phase === 'hidden' ? 'is-hidden' : ''}`} aria-hidden="true">
-    <div className="arc-orbit-loader-mark">
-      <span className="arc-orbit-loader-ring" />
-      <Image unoptimized src="/arc-logo.png" alt="" width={448} height={224} priority />
+
+  return (
+    <div
+      className={`arc-orbit-loader ${phase === 'hidden' ? 'is-hidden' : ''}`}
+      aria-hidden="true"
+    >
+      <div className="arc-orbit-loader-mark">
+        <span className="arc-orbit-loader-ring" />
+        <BrandLogo variant="loader" />
+      </div>
+      <span className="arc-orbit-loader-name">
+        Initializing production intelligence
+      </span>
+      <span className="arc-orbit-loader-line" />
     </div>
-    <span className="arc-orbit-loader-name">Initializing production intelligence</span>
-    <span className="arc-orbit-loader-line" />
-  </div>;
+  );
 }
