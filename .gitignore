@@ -42,4 +42,8 @@ next-env.d.ts
 /backend/
 **/node_modules/
 
+# Accidental empty nested repositories
+/ARC-/
+/ARC-MANUFACTURING/
+
 .seo-render/
