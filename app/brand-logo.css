@@ -1,0 +1,36 @@
+/* Use the supplied artwork with live text so its tagline stays sharp at small sizes. */
+/* Header and footer use the complete supplied logo, including its own tagline. */
+.brand-logo:not(.brand-logo--loader) .brand-art{aspect-ratio:2020/778;overflow:visible}
+.brand-logo{display:inline-flex;flex-direction:column;width:200px;max-width:100%;gap:7px;flex-shrink:0}
+.brand-logo .brand-art{display:block;width:100%;aspect-ratio:1110/365;overflow:hidden}
+.brand-logo.brand-logo--loader .brand-art{aspect-ratio:2020/778;overflow:visible}
+.brand-logo .brand-art img,.footer-brand .brand-logo .brand-art img,.arc-orbit-loader-mark .brand-logo .brand-art img{display:block;width:100%;height:auto;max-width:none;max-height:none;margin:0;object-fit:contain;animation:none}
+.brand-logo .brand-tagline{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;color:#fff;font:500 10px/1.4 var(--arc-font-body);letter-spacing:.04em;white-space:normal;text-align:center}
+.brand-logo .brand-tagline>span,.simple-site .brand-logo .brand-tagline>span{color:#fff;font:inherit;letter-spacing:inherit}
+.brand-tagline i{width:4px;height:4px;border-radius:50%;background:#00e8e8;flex-shrink:0}
+.brand-tagline i:last-of-type{background:#a000ef}
+.brand-logo--footer{width:260px;margin-bottom:16px}
+.brand-logo--footer .brand-tagline{font-size:10px}
+.arc-orbit-loader-mark .brand-logo--loader{position:relative;z-index:1;width:min(330px,76vw);gap:12px;opacity:1;animation:none}
+.brand-logo--loader .brand-tagline{font-size:12px;letter-spacing:.1em}
+@media(max-width:600px){.site-header{position:relative;flex-wrap:wrap;row-gap:10px;padding-block:12px}.site-logo{order:0}.mobile-menu{order:1;margin-left:auto}.site-header .nav-cta{order:2;margin:0 0 0 auto}.site-nav.expanded{top:100%}.brand-logo--footer{width:260px}.brand-logo--loader .brand-tagline{font-size:10px}}
+/* Crop only the raster tagline; render its exact wording as crisp live text. */
+.brand-logo .brand-art,
+.brand-logo:not(.brand-logo--loader) .brand-art,
+.brand-logo.brand-logo--loader .brand-art{aspect-ratio:2020/630;overflow:hidden}
+.brand-logo .brand-tagline{display:block;color:#fff;font-size:9px;font-weight:700;line-height:1.5;letter-spacing:.045em;white-space:nowrap;text-shadow:0 0 6px #d5ffff40}
+.brand-logo--footer .brand-tagline{font-size:10px}
+.brand-logo--loader .brand-tagline{font-size:12px;letter-spacing:.06em}
+@media(max-width:600px){.brand-logo--loader .brand-tagline{font-size:10px}}
+/* Keep all primary links available through a compact mobile disclosure. */
+@media(max-width:850px){
+  .simple-site .site-header{position:relative;height:auto;min-height:86px;flex-wrap:wrap;gap:12px;padding-block:12px}
+  .simple-site .site-header .site-logo{order:0}
+  .simple-site .site-header .mobile-menu{display:flex;align-items:center;justify-content:center;order:1;margin-left:auto;width:44px;height:44px;padding:0;border:1px solid #386365;border-radius:6px;color:#d9fff9;background:#10292b;cursor:pointer}
+  .simple-site .site-header .mobile-menu:hover{background:#1c4245}
+  .simple-site .site-header .nav-cta{display:none}
+  .simple-site .site-header .site-nav{display:none}
+  .simple-site .site-header .site-nav.expanded{display:flex;position:static;order:2;flex-basis:100%;flex-direction:column;gap:4px;padding:12px 0 0;border-top:1px solid #29474a;border-bottom:0;background:transparent}
+  .simple-site .site-header .site-nav a{display:flex;align-items:center;min-height:44px;padding:8px 12px;border-radius:5px;color:#d9fff9}
+  .simple-site .site-header .site-nav a:hover{background:#153236}
+}

@@ -1,0 +1,70 @@
+/* Shared font assets and typography for the website and standalone exports. */
+@font-face { font-family: Inter; font-style: normal; font-weight: 300; font-display: swap; src: url('./fonts/inter-300.ttf') format('truetype'); }
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; font-display: swap; src: url('./fonts/inter-400.ttf') format('truetype'); }
+@font-face { font-family: Inter; font-style: normal; font-weight: 500; font-display: swap; src: url('./fonts/inter-500.ttf') format('truetype'); }
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; font-display: swap; src: url('./fonts/inter-600.ttf') format('truetype'); }
+@font-face { font-family: Inter; font-style: normal; font-weight: 700; font-display: swap; src: url('./fonts/inter-700.ttf') format('truetype'); }
+:root {
+  --arc-font-body: 'Inter', Arial, system-ui, sans-serif;
+  --arc-font-heading: 'Gilroy', 'Inter', Arial, system-ui, sans-serif;
+  --arc-type-hero: 2.25rem;
+  --arc-type-page: 2.25rem;
+  --arc-type-section: 1.875rem;
+  --arc-type-brand: 1.875rem;
+  --arc-type-intro: 1.125rem;
+}
+body, .simple-site, .verification-dialog, .cookie-panel {
+  font-family: var(--arc-font-body);
+  font-size: 1rem;
+  font-weight: 400;
+}
+button, input, textarea, select { font-family: var(--arc-font-body); }
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--arc-font-heading);
+  font-weight: 600;
+}
+.simple-site .site-hero h1 {
+  font-size: var(--arc-type-hero);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+.simple-site .info-page h1 { font-size: var(--arc-type-page); font-weight: 600; }
+.simple-site :is(.about-body, .section-heading-simple, .trace-copy, .closing-section, .faq-section, .info-page) h2 {
+  font-size: var(--arc-type-section);
+  font-weight: 500;
+}
+.simple-site :is(.site-hero, .about-body, .trace-copy, .section-heading-simple) > p { font-size: var(--arc-type-intro); }
+.simple-site :is(.principles, .process-steps) h3 { font-size: 1.5rem; font-weight: 500; }
+.simple-site :is(.principles, .process-steps) p { font-size: 0.875rem; }
+.simple-site :is(.site-nav, .arc-footer, .footer-column h2, .footer-assurance, .footer-assurance p, .footer-brand > p, .footer-bottom, .footer-bottom small) { font-size: 0.875rem; }
+.simple-site :is(.nav-cta, .site-primary, .text-link), .verification-dialog :is(button, input, label, p), .cookie-panel :is(button, p), .simple-site :is(.info-page, .faq-section) p { font-size: 1rem; }
+.simple-site :is(.nav-cta, .site-primary, .text-link) { font-weight: 500; }
+.simple-site :is(.hero-kicker, .section-label, .policy-status), .simple-site .info-page .policy-status { font-size: 0.75rem; font-weight: 500; }
+.verification-dialog h2, .cookie-panel h2 { font-size: 1.25rem; font-weight: 600; }
+.simple-site .example-part strong { font-size: 1.25rem; font-weight: 600; }
+.simple-site .hero-brand-label { font-family: var(--arc-font-heading); font-size: var(--arc-type-brand); font-weight: 700; }
+.brand-logo .brand-tagline, .arc-orbit-loader-name { font-family: var(--arc-font-body); }
+@media (min-width: 640px) {
+  :root {
+    --arc-type-hero: 3rem;
+    --arc-type-page: 3rem;
+    --arc-type-section: 2.25rem;
+    --arc-type-brand: 2.25rem;
+  }
+}
+@media (min-width: 1024px) {
+  :root { --arc-type-hero: 4.5rem; --arc-type-brand: 3rem; }
+}
+
+/* Legal reading scale: more compact than the marketing page headings. */
+.simple-site .info-page.legal-page { font-size: 0.875rem; line-height: 1.75; }
+.simple-site .info-page.legal-page h1 { font-size: 1.875rem; line-height: 1.25; }
+.simple-site .info-page.legal-page h2 { font-size: 1.25rem; line-height: 1.4; }
+.simple-site .info-page.legal-page p,
+.simple-site .info-page.legal-page .text-link { font-size: 0.875rem; }
+.simple-site .info-page.legal-page .policy-status { font-size: 0.75rem; }
+@media (max-width: 639px) {
+  .simple-site .info-page.legal-page h1 { font-size: 1.5rem; }
+  .simple-site .info-page.legal-page h2 { font-size: 1.125rem; }
+}
