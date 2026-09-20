@@ -259,8 +259,18 @@ html.arc-page-hidden .site-main > section::before { animation-play-state: paused
 .footer-bottom .legal-links{display:flex;align-items:center;flex-wrap:wrap;gap:10px 18px}
 .footer-bottom .legal-links>a,.footer-bottom .legal-links>button{white-space:nowrap}
 
+/* Give every footer action the same clear, lightweight hover response. */
+.footer-bottom .legal-links>a,.footer-bottom .share-control>button,.footer-bottom>a{position:relative;display:inline-flex;align-items:center;min-height:44px;color:var(--footer-accent);text-decoration:none;transition:color .22s ease,transform .22s ease}
+.footer-bottom .legal-links>a::after,.footer-bottom .share-control>button::after,.footer-bottom>a::after{content:"";position:absolute;right:0;bottom:7px;left:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .25s ease}
+.footer-bottom>a svg{transition:transform .22s ease}
+@media (hover:hover) and (pointer:fine){
+  .footer-bottom .legal-links>a:hover,.footer-bottom .share-control>button:hover,.footer-bottom>a:hover{color:#8afff0;transform:translateY(-2px)}
+  .footer-bottom .legal-links>a:hover::after,.footer-bottom .share-control>button:hover::after,.footer-bottom>a:hover::after{transform:scaleX(1);transform-origin:left}
+  .footer-bottom>a:hover svg{transform:translateY(-2px)}
+}
+
 /* Fill the viewport instead of centering the page inside a capped container. */
-.simple-site{width:100%;min-height:100vh}
+.simple-site{width:100%;min-height:100vh;background:radial-gradient(ellipse 90% 42rem at 72% 0,rgba(28,103,108,.27),transparent 70%),linear-gradient(180deg,#071716 0%,#081415 38%,#070d0e 100%)}
 .simple-site .site-header,.simple-site .site-main,.simple-site .arc-footer{width:100%;max-width:none;margin-inline:0;padding-inline:24px;box-sizing:border-box}
 /* Give desktop content a shared left inset while keeping the original text measure. */
 @media(min-width:1024px){
@@ -322,6 +332,10 @@ html.arc-scrolled .simple-site .site-header { background: color-mix(in srgb, var
 @media (min-width: 1024px) {
   .simple-site .site-hero { clip-path: inset(calc(-1 * var(--arc-header-height, 110px) - 16px) -24px 0 calc(-1 * var(--arc-desktop-left-inset))); }
   .simple-site .site-hero::before { left: calc(-1 * var(--arc-desktop-left-inset)); right: -24px; }
+  .simple-site .site-main > :is(.about-section, .process-section, .trace-section, .closing-section)::before {
+    left: calc(-1 * var(--arc-desktop-left-inset));
+    right: -24px;
+  }
 }
 .footer-location{display:flex;align-items:center;gap:10px;max-width:100%}
 .footer-contact .footer-location svg{width:22px;height:15px;flex-shrink:0;border:1px solid #ffffff24}

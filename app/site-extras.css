@@ -1,6 +1,7 @@
 .skip-link{position:fixed;top:8px;left:8px;z-index:10001;padding:12px 18px;background:#050909;color:#30ddd2;transform:translateY(-160%)}
 .skip-link:focus{transform:none}
 .info-page{max-width:900px;min-height:80vh;margin:auto;padding:48px 24px 100px;color:var(--arc-teal,#30ddd2);line-height:1.8}
+.info-page>.text-link{display:flex;width:fit-content;margin-bottom:40px}.info-page>.text-link+h1{margin-top:0!important}
 .info-page h1{font-size:clamp(32px,6vw,56px);margin:28px 0}.info-page h2{font-size:24px;margin:26px 0 12px}.info-page p{font-size:17px;margin:12px 0}.info-page a,.cookie-panel a{text-decoration:underline;text-underline-offset:4px}
 .policy-status{border-left:3px solid var(--arc-purple,#c18aff);padding-left:14px}
 .legal-nav,.legal-links{display:flex;flex-wrap:wrap;gap:18px;align-items:center}.legal-nav{border-top:1px solid #193b3a;margin-top:40px;padding-top:20px}
