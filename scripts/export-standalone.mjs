@@ -12,7 +12,7 @@ import { serializeStructuredData } from '../shared/seo-data.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const site = JSON.parse(await readFile(resolve(root, 'lib/site.json'), 'utf8'));
 const escapeHtml = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
-const logo = `data:image/png;base64,${(await readFile(resolve(root, 'public/arc-logo.png'))).toString('base64')}`;
+const logo = `data:image/png;base64,${(await readFile(resolve(root, 'public/arc-logo-transparent.png'))).toString('base64')}`;
 const favicon = `data:image/png;base64,${(await readFile(resolve(root, 'public/favicon.png'))).toString('base64')}`;
 const sharedConfig = {
   root,
@@ -30,8 +30,9 @@ const sharedConfig = {
     },
     transform(code, id) {
       if (id.split('?')[0].endsWith('.tsx') && !id.includes('node_modules')) {
-        const usesLogo = code.includes('"/arc-logo.png"');
-        const content = code.replaceAll('"/arc-logo.png"', 'arcEmbeddedLogo').replaceAll('"/privacy"','"./privacy.html"').replaceAll('"/terms"','"./terms.html"').replaceAll('"/contact"','"./contact.html"').replaceAll('"/"','"./ARC (3).html"').replaceAll('"/#faq"','"./ARC (3).html#faq"');
+        const usesLogo = code.includes('"/arc-logo-transparent.png"');
+        // Pages deploys the homepage as index.html, not its local export filename.
+        const content = code.replaceAll('"/arc-logo-transparent.png"', 'arcEmbeddedLogo').replaceAll('"/privacy"','"./privacy.html"').replaceAll('"/terms"','"./terms.html"').replaceAll('"/contact"','"./contact.html"').replaceAll('"/"','"./"').replaceAll('"/#faq"','"./#faq"').replaceAll('"/#home"','"./#home"');
         return (usesLogo ? 'import arcEmbeddedLogo from "virtual:arc-logo";\n' : '') + content;
       }
     },

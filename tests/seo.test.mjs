@@ -3,6 +3,15 @@ import assert from 'node:assert/strict';
 import { structuredData, serializeStructuredData } from '../shared/seo-data.mjs';
 import { readFileSync } from 'node:fs';
 
+test('exported secondary pages return to the local homepage and FAQ', () => {
+  for (const file of ['contact.html', 'privacy.html', 'terms.html']) {
+    const html = readFileSync(file, 'utf8');
+    assert.match(html, /<a[^>]+href="\.\/#home"[^>]*>\s*← Back to ARC<\/a>/, file);
+    assert.match(html, /<a[^>]+href="https:\/\/arc-ai\.in\/#faq"/, file);
+    assert.ok(!html.includes('./ARC (3).html'), `${file} must not link to the unpublished export filename`);
+  }
+});
+
 test('structured data uses the configured public origin and known business details', () => {
   const data = structuredData({ url: 'https://example.com', description: 'Component traceability' });
   assert.equal(data['@graph'][0].url, 'https://example.com/');

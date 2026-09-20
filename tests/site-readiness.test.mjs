@@ -24,7 +24,18 @@ test('copy protection blocks content and editable-field events, and cleans up', 
     listeners.get(name)(event);
     assert.equal(blocked, true, `${name} in editable field`);
   }
-  assert.equal(listeners.has('keydown'), false, 'Keyboard navigation and browser shortcuts stay available');
+    assert.equal(listeners.has('keydown'), false, 'Keyboard navigation and browser shortcuts stay available');
+    for (const [target, expected] of [
+      [{ closest: () => null }, true],
+      [{ closest: () => ({}) }, false],
+      [{ closest: () => null, isContentEditable: true }, false],
+      [{ nodeType: 3, parentElement: { closest: () => null, isContentEditable: true } }, false],
+    ]) {
+      let blocked = false;
+      listeners.get('selectstart')({ target, preventDefault: () => { blocked = true; } });
+      assert.equal(blocked, expected, 'Selection is blocked only outside editors');
+    }
+    assert.equal(listeners.has('touchstart'), false, 'Touch scrolling and zoom stay available');
   remove();
   assert.equal(listeners.size, 0);
 });
@@ -37,7 +48,7 @@ test('public origins must be explicit HTTPS origins without credentials, paths, 
 });
 
 test('standalone exports contain crawlable page content before JavaScript', () => {
-  const logo = readFileSync('public/arc-logo.png').toString('base64');
+  const logo = readFileSync('public/arc-logo-transparent.png').toString('base64');
   for (const [file, page] of [['ARC (3).html', 'home'], ['privacy.html', 'privacy'], ['terms.html', 'terms']]) {
     const html = readFileSync(file, 'utf8');
     assert.ok(html.includes(`data-arc-page="${page}"`), file);

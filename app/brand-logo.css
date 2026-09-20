@@ -34,3 +34,19 @@
   .simple-site .site-header .site-nav a{display:flex;align-items:center;min-height:44px;padding:8px 12px;border-radius:5px;color:#d9fff9}
   .simple-site .site-header .site-nav a:hover{background:#153236}
 }
+/* Display the supplied reference artwork, including its original tagline.
+   Crop its empty outer canvas in CSS without altering the source image. */
+.brand-logo .brand-art,
+.brand-logo:not(.brand-logo--loader) .brand-art,
+.brand-logo.brand-logo--loader .brand-art{position:relative;aspect-ratio:910/380;overflow:hidden}
+.brand-logo .brand-art img,
+.footer-brand .brand-logo .brand-art img,
+.arc-orbit-loader-mark .brand-logo .brand-art img{position:absolute;left:-6.593407%;top:-81.578947%;width:112.527473%;height:auto;filter:brightness(1.14);object-fit:contain}
+.brand-logo .brand-tagline{display:none}
+/* Transparent artwork: frame the logo and tagline without the old JPG crop. */
+.brand-logo .brand-art,
+.brand-logo:not(.brand-logo--loader) .brand-art,
+.brand-logo.brand-logo--loader .brand-art{aspect-ratio:1640/620}
+.brand-logo .brand-art img,
+.footer-brand .brand-logo .brand-art img,
+.arc-orbit-loader-mark .brand-logo .brand-art img{left:-4.878049%;top:-24.193548%;width:108.170732%;height:auto;filter:brightness(1.14)}

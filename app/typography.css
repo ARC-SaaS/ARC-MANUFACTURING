@@ -58,13 +58,20 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 /* Legal reading scale: more compact than the marketing page headings. */
-.simple-site .info-page.legal-page { font-size: 0.875rem; line-height: 1.75; }
-.simple-site .info-page.legal-page h1 { font-size: 1.875rem; line-height: 1.25; }
-.simple-site .info-page.legal-page h2 { font-size: 1.25rem; line-height: 1.4; }
+.simple-site .info-page.legal-page {
+  font-size: 0.875rem;
+  line-height: 1.85;
+}
+.simple-site .info-page.legal-page h1 { font-size: 1.875rem; line-height: 1.25; margin-bottom: 2.5rem; }
+.simple-site .info-page.legal-page section + section { margin-top: 2.25rem; }
+.simple-site .info-page.legal-page h2 { font-size: 1.25rem; line-height: 1.4; margin: 0 0 0.875rem; }
 .simple-site .info-page.legal-page p,
 .simple-site .info-page.legal-page .text-link { font-size: 0.875rem; }
+.simple-site .info-page.legal-page section p { margin: 0; }
+.simple-site .info-page.legal-page section p + p { margin-top: 1rem; }
 .simple-site .info-page.legal-page .policy-status { font-size: 0.75rem; }
 @media (max-width: 639px) {
   .simple-site .info-page.legal-page h1 { font-size: 1.5rem; }
   .simple-site .info-page.legal-page h2 { font-size: 1.125rem; }
+  .simple-site .info-page.legal-page section + section { margin-top: 2rem; }
 }

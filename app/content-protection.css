@@ -1,11 +1,22 @@
 /* Discourage selection without changing the site's appearance. */
-html, body, body * {
+html,
+body,
+body * {
+  -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
 }
 
 /* Allow selecting form entries for editing; copy/cut events remain blocked. */
-input, textarea, [contenteditable]:not([contenteditable="false"]) {
+input,
+textarea,
+[contenteditable]:not([contenteditable='false']) {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Nested rich-text elements must keep their editor's selection behavior. */
+[contenteditable]:not([contenteditable='false']) * {
   -webkit-user-select: text;
   user-select: text;
 }

@@ -262,6 +262,12 @@ html.arc-page-hidden .site-main > section::before { animation-play-state: paused
 /* Fill the viewport instead of centering the page inside a capped container. */
 .simple-site{width:100%;min-height:100vh}
 .simple-site .site-header,.simple-site .site-main,.simple-site .arc-footer{width:100%;max-width:none;margin-inline:0;padding-inline:24px;box-sizing:border-box}
+/* Give desktop content a shared left inset while keeping the original text measure. */
+@media(min-width:1024px){
+  .simple-site{--arc-desktop-left-inset:clamp(64px,9vw,160px)}
+  .simple-site .site-header,.simple-site .site-main,.simple-site .arc-footer{padding-left:var(--arc-desktop-left-inset)}
+  .simple-site .info-page{width:100%;max-width:calc(876px + var(--arc-desktop-left-inset));margin-inline:0;padding-left:var(--arc-desktop-left-inset);box-sizing:border-box}
+}
 @media(max-width:600px){.simple-site .site-header,.simple-site .site-main,.simple-site .arc-footer{padding-inline:16px}}
 
 /* Motion-only enhancement: the established palette, assets and geometry remain canonical. */
@@ -311,6 +317,11 @@ html.arc-scrolled .simple-site .site-header { background: color-mix(in srgb, var
 @media (max-width: 600px) {
   .simple-site .site-hero { clip-path: inset(calc(-1 * var(--arc-header-height, 85px) - 16px) -16px 0); }
   .simple-site .site-hero::before { top: calc(-1 * var(--arc-header-height, 85px) - 16px); }
+}
+
+@media (min-width: 1024px) {
+  .simple-site .site-hero { clip-path: inset(calc(-1 * var(--arc-header-height, 110px) - 16px) -24px 0 calc(-1 * var(--arc-desktop-left-inset))); }
+  .simple-site .site-hero::before { left: calc(-1 * var(--arc-desktop-left-inset)); right: -24px; }
 }
 .footer-location{display:flex;align-items:center;gap:10px;max-width:100%}
 .footer-contact .footer-location svg{width:22px;height:15px;flex-shrink:0;border:1px solid #ffffff24}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import './original-theme.css';
+import './site-extras.css';
 import './typography.css';
 import './content-protection.css';
 import ContentProtection from '../components/content-protection';

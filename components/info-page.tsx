@@ -11,7 +11,7 @@ export default function InfoPage({
   return (
     <div className="simple-site">
       <main id="main-content" className={`info-page ${className}`.trim()} tabIndex={-1}>
-        <a className="text-link" href="/">
+        <a className="text-link" href="/#home">
           ← Back to ARC
         </a>
         <h1>{title}</h1>
@@ -19,7 +19,7 @@ export default function InfoPage({
         <nav className="legal-nav" aria-label="Legal navigation">
           <a href="/privacy">Privacy policy</a>
           <a href="/terms">Terms</a>
-          <a href="/#faq">FAQ</a>
+          <a href="https://arc-ai.in/#faq">FAQ</a>
           <a href="/contact">Contact ARC</a>
         </nav>
       </main>

@@ -6,7 +6,7 @@ export default function BrandLogo({ variant = 'header' }: { variant?: 'header' |
   return (
     <span className={`brand-logo brand-logo--${variant}`}>
       <span className="brand-art">
-        <Image unoptimized={variant === 'loader'} src={variant === 'loader' ? loaderImage : "/arc-logo.png"} alt="ARC — Automate, Optimize, Elevate" width={2020} height={778}
+        <Image unoptimized={variant === 'loader'} src={variant === 'loader' ? loaderImage : "/arc-logo-transparent.png"} alt="ARC — Automate, Optimize, Elevate" width={1774} height={887}
           priority={variant !== 'footer'} fetchPriority={variant === 'loader' ? 'high' : 'auto'}
           decoding={variant === 'loader' ? 'sync' : 'async'} />
       </span>
