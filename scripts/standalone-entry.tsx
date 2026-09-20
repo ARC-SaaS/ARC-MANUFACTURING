@@ -6,6 +6,7 @@ import Terms from '../app/terms/page';
 import Contact from '../app/contact/page';
 import '../app/globals.css';
 import '../app/original-theme.css';
+import '../app/site-extras.css';
 import '../app/typography.css';
 import '../app/reload.css';
 import '../app/content-protection.css';

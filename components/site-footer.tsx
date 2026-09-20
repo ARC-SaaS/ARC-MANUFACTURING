@@ -1,0 +1,17 @@
+import BrandLogo from '@/components/brand-logo';
+import FooterLocations from '@/components/footer-locations';
+import ShareButton from '@/components/share-button';
+import site from '@/lib/site.json';
+
+export default function SiteFooter() {
+  return <footer className="arc-footer">
+    <svg className="footer-pulse" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 12h10l3-7 5 14 2-5" /></svg>
+    <div className="footer-grid">
+      <div className="footer-brand"><a href="/#home" aria-label="ARC home"><BrandLogo variant="footer" /></a><p>ARC brings part records and inspection checks together to help production teams understand what can move forward and what needs attention.</p><div className="footer-assurance"><div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6z" /></svg><span>Every check. Before every connection.</span></div><p>Verified identity · Compatible parts · Clear history</p></div></div>
+      <nav className="footer-column" aria-label="Footer navigation"><h2>Navigate</h2><a href="/#about">About ARC</a><a href="/#process">How it works</a><a href="/#traceability">Traceability</a></nav>
+      <div className="footer-column" id="footer-industries"><h2>Industries</h2><span>Automotive</span><span>Electronics</span><span>Industrial</span><span>Pharmaceutical</span><span>Food &amp; Beverage</span><span>Textile</span></div>
+      <address className="footer-column footer-contact"><h2>Contact</h2><a href="tel:+916380436024"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z" /></svg><span>+91 6380436024</span></a><a href="mailto:saas@arc-ai.in"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 5 10 8L22 5" /></svg><span>saas@arc-ai.in</span></a><span className="footer-social"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M7 10v7m0-10v.01M11 17v-7m0 3a3 3 0 0 1 6 0v4" /></svg><span>LinkedIn</span></span><FooterLocations /></address>
+    </div>
+    <div className="footer-bottom"><small>© 2026 ARC. All rights reserved. · v{site.version}</small><nav className="legal-links" aria-label="Legal and sharing"><a href="/privacy">Privacy policy</a><a href="/terms">Terms</a><a href="/#faq">FAQ</a><a href="/contact">Contact</a><ShareButton /></nav><a href="/#home">Back to the top <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 19V5m-5 5 5-5 5 5" /></svg></a></div>
+  </footer>;
+}

@@ -1,6 +1,5 @@
 import InfoPage from '@/components/info-page';
 import BrandLogo from '@/components/brand-logo';
-import FooterLocations from '@/components/footer-locations';
 import { pageMetadata } from '@/lib/seo';
 import './contact.css';
 
@@ -12,7 +11,7 @@ export const metadata = pageMetadata(
 
 export default function Contact() {
   return (
-    <InfoPage title="Let’s talk about your production.">
+    <InfoPage title="Let’s talk about your production." className="contact-page" showFooter showLegalNav={false}>
       <div className="contact-intro">
         <BrandLogo />
         <p>Have a question about ARC or want to explore a demo? Tell us about your production process and the checks you want to bring together.</p>
@@ -33,10 +32,6 @@ export default function Contact() {
           <a className="text-link" href="tel:+916380436024">Call our team <span aria-hidden="true">↗</span></a>
         </section>
       </div>
-      <section className="contact-locations" aria-labelledby="contact-locations">
-        <h2 id="contact-locations">Our locations</h2>
-        <div className="footer-contact"><FooterLocations /></div>
-      </section>
     </InfoPage>
   );
 }
