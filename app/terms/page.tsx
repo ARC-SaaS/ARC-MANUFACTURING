@@ -47,8 +47,7 @@ export default function Terms() {
         <h2>Content and links</h2>
         <p>
           ARC branding and website material remain subject to the rights of
-          their respective owners. Links to email, telephone, or other services
-          are provided for convenience; those services operate under their own
+          their respective owners. External services operate under their own
           terms.
         </p>
       </section>
@@ -64,8 +63,7 @@ export default function Terms() {
       <section>
         <h2>Contact</h2>
         <p>
-          Questions about these terms can be sent to{' '}
-          <a href="mailto:saas@arc-ai.in">saas@arc-ai.in</a>.
+          Business contact details will be published after confirmation.
         </p>
       </section>
       {!site.legalReviewed && (

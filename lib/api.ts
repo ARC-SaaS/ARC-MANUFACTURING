@@ -26,6 +26,11 @@ const products = Array.from({ length: 20 }, (_, i) => {
     })),
   };
 });
+export const sampleRecordCounts = {
+  total: products.length,
+  parents: products.filter((product) => product.componentType === 'PARENT').length,
+  children: products.filter((product) => product.componentType === 'CHILD').length,
+};
 const relationships = [
   {
     parentProductId: 'demo-4',

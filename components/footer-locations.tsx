@@ -19,7 +19,7 @@ export default function FooterLocations() {
           <path fill="#8a1538" d="M0 0h24v16H0z" />
           <path fill="#fff" d="M0 0H6L8 .89 6 1.78 8 2.67 6 3.56 8 4.44 6 5.33 8 6.22 6 7.11 8 8 6 8.89 8 9.78 6 10.67 8 11.56 6 12.44 8 13.33 6 14.22 8 15.11 6 16H0Z" />
         </svg>
-        <span>Doha, Qatar</span>
+        <span>Al muntazah doha, Qatar</span>
       </span>
     </>
   );

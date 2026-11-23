@@ -1,0 +1,234 @@
+/* Futuristic atmosphere scoped exclusively to the home hero. */
+.simple-site { overflow-x: clip; }
+.simple-site .site-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  width: 100vw;
+  margin-left: calc(-1 * var(--arc-desktop-left-inset, 50px));
+  margin-right: 0;
+  padding-left: var(--arc-desktop-left-inset, 50px);
+  padding-right: 24px;
+  background:
+    radial-gradient(ellipse 52rem 38rem at 52% 46%, rgba(9, 49, 79, .18), transparent 76%),
+    linear-gradient(135deg, #050811 0%, #080d16 54%, #05090e 100%);
+}
+
+.simple-site .site-hero::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 0;
+  inset: -5%;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(5, 12, 22, .88) 0%, rgba(5, 12, 22, .76) 38%, rgba(5, 12, 22, .34) 72%, rgba(5, 12, 22, .28) 100%),
+    linear-gradient(180deg, rgba(5, 12, 22, .12) 0%, rgba(5, 12, 22, .14) 55%, rgba(5, 12, 22, .62) 100%),
+    radial-gradient(ellipse 44vw 38vw at 18% 22%, rgba(0, 130, 255, .12), transparent 72%),
+    radial-gradient(ellipse 38vw 42vw at 78% 52%, rgba(0, 218, 239, .09), transparent 74%),
+    url('/arc-background.webp') center / cover no-repeat;
+  filter: saturate(112%);
+  transform: translate3d(0, 0, 0) scale(1.02);
+  will-change: transform;
+  animation: hero-gradient-drift 34s ease-in-out infinite alternate;
+}
+
+.simple-site .hero-ambient {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 1000px;
+}
+
+.simple-site .hero-ambient::before {
+  content: "";
+  position: absolute;
+  inset: -24% -18% -2%;
+  background-image:
+    linear-gradient(rgba(86, 183, 225, .085) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(86, 183, 225, .085) 1px, transparent 1px),
+    radial-gradient(circle at 80% 22%, transparent 0 21rem, rgba(45, 174, 225, .075) 21.05rem, transparent 21.2rem);
+  background-size: 72px 72px, 72px 72px, 100% 100%;
+  transform: perspective(900px) rotateX(58deg) scale(1.55) translate3d(0, 9%, 0);
+  transform-origin: 50% 100%;
+  mask-image: linear-gradient(180deg, transparent 4%, rgba(0, 0, 0, .42) 42%, #000 86%);
+  opacity: .58;
+  animation: hero-grid-flow 36s linear infinite;
+  will-change: transform;
+}
+
+.simple-site .hero-ambient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 42rem 30rem at 12% 45%, rgba(24, 127, 221, .12), transparent 75%),
+    radial-gradient(ellipse 38rem 28rem at 88% 55%, rgba(0, 200, 231, .09), transparent 76%),
+    radial-gradient(circle at 16% 20%, rgba(142, 226, 255, .4) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 76% 68%, rgba(110, 216, 255, .3) 0 1px, transparent 1.8px);
+  background-size: 100% 100%, 100% 100%, 250px 250px, 330px 330px;
+  opacity: .74;
+  animation: hero-particle-field 28s ease-in-out infinite alternate;
+}
+
+.simple-site .hero-orb {
+  position: absolute;
+  display: block;
+  width: clamp(18rem, 34vw, 36rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(44px);
+  opacity: .42;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+.simple-site .hero-orb--blue {
+  top: 8%; left: 8%;
+  background: radial-gradient(circle, rgba(0, 113, 255, .42), rgba(0, 93, 207, .08) 56%, transparent 72%);
+  animation: hero-orb-drift-one 26s ease-in-out infinite alternate;
+}
+.simple-site .hero-orb--cyan {
+  top: 26%; right: -7%;
+  width: clamp(20rem, 40vw, 42rem);
+  background: radial-gradient(circle, rgba(0, 216, 237, .28), rgba(0, 160, 205, .07) 55%, transparent 73%);
+  animation: hero-orb-drift-two 32s ease-in-out infinite alternate;
+}
+.simple-site .hero-orb--violet {
+  bottom: -43%; left: 38%;
+  width: clamp(18rem, 30vw, 34rem);
+  background: radial-gradient(circle, rgba(78, 89, 208, .22), rgba(55, 66, 163, .04) 58%, transparent 73%);
+  animation: hero-orb-drift-three 38s ease-in-out infinite alternate;
+}
+
+.simple-site .hero-light-wave {
+  position: absolute;
+  left: -18%;
+  display: block;
+  width: 136%;
+  height: clamp(7rem, 17vw, 15rem);
+  border-top: 1px solid rgba(92, 209, 255, .25);
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: .3;
+  transform: rotate(-11deg);
+  will-change: transform;
+}
+.simple-site .hero-light-wave--one { top: 32%; animation: hero-wave-flow-one 24s ease-in-out infinite alternate; }
+.simple-site .hero-light-wave--two { top: 54%; border-color: rgba(0, 188, 233, .2); opacity: .22; animation: hero-wave-flow-two 30s ease-in-out infinite alternate; }
+
+.simple-site .hero-particle {
+  position: absolute;
+  left: var(--particle-x);
+  top: var(--particle-y);
+  width: var(--particle-size, 3px);
+  height: var(--particle-size, 3px);
+  border-radius: 50%;
+  background: #b8efff;
+  box-shadow: 0 0 10px 2px rgba(51, 190, 255, .3);
+  opacity: .42;
+  animation: hero-particle-float var(--particle-speed, 11s) ease-in-out var(--particle-delay, 0s) infinite alternate;
+}
+.simple-site .hero-particle:nth-of-type(1) { --particle-x: 11%; --particle-y: 28%; --particle-speed: 11s; --particle-delay: -4s; }
+.simple-site .hero-particle:nth-of-type(2) { --particle-x: 24%; --particle-y: 72%; --particle-size: 2px; --particle-speed: 15s; --particle-delay: -8s; }
+.simple-site .hero-particle:nth-of-type(3) { --particle-x: 39%; --particle-y: 18%; --particle-speed: 13s; --particle-delay: -6s; }
+.simple-site .hero-particle:nth-of-type(4) { --particle-x: 54%; --particle-y: 82%; --particle-size: 4px; --particle-speed: 17s; --particle-delay: -11s; }
+.simple-site .hero-particle:nth-of-type(5) { --particle-x: 69%; --particle-y: 24%; --particle-size: 2px; --particle-speed: 12s; --particle-delay: -3s; }
+.simple-site .hero-particle:nth-of-type(6) { --particle-x: 82%; --particle-y: 63%; --particle-speed: 16s; --particle-delay: -9s; }
+.simple-site .hero-particle:nth-of-type(7) { --particle-x: 91%; --particle-y: 38%; --particle-size: 2px; --particle-speed: 10s; --particle-delay: -5s; }
+.simple-site .hero-particle:nth-of-type(8) { --particle-x: 32%; --particle-y: 49%; --particle-size: 2px; --particle-speed: 14s; --particle-delay: -12s; }
+.simple-site .hero-particle:nth-of-type(9) { --particle-x: 62%; --particle-y: 47%; --particle-speed: 18s; --particle-delay: -7s; }
+.simple-site .hero-particle:nth-of-type(10) { --particle-x: 6%; --particle-y: 84%; --particle-size: 2px; --particle-speed: 12s; --particle-delay: -10s; }
+
+.simple-site .hero-pointer-glow {
+  position: absolute;
+  top: var(--hero-pointer-y, 34%);
+  left: var(--hero-pointer-x, 66%);
+  width: clamp(18rem, 32vw, 34rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(24, 157, 255, .13), rgba(0, 193, 223, .055) 34%, transparent 72%);
+  transform: translate3d(-50%, -50%, 0);
+  transition: opacity 220ms ease;
+  will-change: transform;
+}
+
+.simple-site .hero-content,
+.simple-site .hero-bottom { position: relative; z-index: 2; }
+.simple-site .hero-copy { position: relative; }
+.simple-site .hero-copy > .hero-kicker,
+.simple-site .hero-copy > h1,
+.simple-site .hero-copy > p,
+.simple-site .hero-copy > .hero-actions {
+  opacity: 0;
+  animation: hero-copy-enter .76s cubic-bezier(.2, .72, .25, 1) both;
+}
+.simple-site .hero-copy > .hero-kicker { animation-delay: .12s; }
+.simple-site .hero-copy > h1 { animation-delay: .24s; }
+.simple-site .hero-copy > p { animation-delay: .36s; }
+.simple-site .hero-copy > .hero-actions { animation-delay: .48s; }
+
+@keyframes hero-gradient-drift {
+  from { transform: translate3d(-.5%, .25%, 0) scale(1.02); }
+  to { transform: translate3d(.55%, -.4%, 0) scale(1.07); }
+}
+@keyframes hero-grid-flow {
+  from { background-position: 0 0, 0 0, center; transform: perspective(900px) rotateX(58deg) scale(1.55) translate3d(0, 9%, 0); }
+  to { background-position: 0 72px, 72px 0, center; transform: perspective(900px) rotateX(58deg) scale(1.55) translate3d(0, 7%, 0); }
+}
+@keyframes hero-particle-field { from { opacity: .48; transform: translate3d(-.4%, 0, 0); } to { opacity: .78; transform: translate3d(.4%, -.6%, 0); } }
+@keyframes hero-orb-drift-one { to { transform: translate3d(8vw, -4vh, 0) scale(1.08); } }
+@keyframes hero-orb-drift-two { to { transform: translate3d(-7vw, 5vh, 0) scale(.94); } }
+@keyframes hero-orb-drift-three { to { transform: translate3d(4vw, -6vh, 0) scale(1.1); } }
+@keyframes hero-wave-flow-one { to { transform: translate3d(4%, -14px, 0) rotate(-8deg) scaleY(1.12); } }
+@keyframes hero-wave-flow-two { to { transform: translate3d(-3%, 17px, 0) rotate(-14deg) scaleY(.88); } }
+@keyframes hero-particle-float { from { opacity: .18; translate: 0 8px; scale: .8; } to { opacity: .65; translate: 8px -15px; scale: 1.2; } }
+@keyframes hero-copy-enter { from { opacity: 0; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
+@keyframes hero-scroll-parallax { from { translate: 0 0; } to { translate: 0 -5vh; } }
+
+@supports (animation-timeline: scroll(root block)) {
+  .simple-site .hero-ambient::before {
+    animation: hero-grid-flow 36s linear infinite, hero-scroll-parallax 1s linear both;
+    animation-timeline: auto, scroll(root block);
+  }
+}
+
+@media (max-width: 760px) {
+  .simple-site .site-hero { width: 100vw; margin-left: -22px; margin-right: 0; padding-left: 22px; padding-right: 22px; }
+  .simple-site .hero-orb { opacity: .28; filter: blur(34px); }
+  .simple-site .hero-light-wave { opacity: .16; }
+  .simple-site .hero-ambient::before { opacity: .36; background-size: 58px 58px, 58px 58px, 100% 100%; }
+  .simple-site .hero-pointer-glow { display: none; }
+}
+
+@media (max-width: 480px) {
+  .simple-site .site-hero { width: 100vw; margin-left: -18px; margin-right: 0; padding-left: 18px; padding-right: 18px; }
+}
+
+@media (min-width: 761px) and (max-width: 1000px) {
+  .simple-site .site-hero { width: 100vw; margin-left: -24px; margin-right: 0; padding-left: 24px; padding-right: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .simple-site .site-hero::before,
+  .simple-site .hero-ambient::before,
+  .simple-site .hero-ambient::after,
+  .simple-site .hero-orb,
+  .simple-site .hero-light-wave,
+  .simple-site .hero-particle,
+  .simple-site .hero-copy > * {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+    translate: none;
+    scale: none;
+    will-change: auto;
+  }
+  .simple-site .hero-pointer-glow { display: none; }
+}
+
+html.arc-page-hidden .simple-site .site-hero::before,
+html.arc-page-hidden .simple-site .hero-ambient::before,
+html.arc-page-hidden .simple-site .hero-ambient::after,
+html.arc-page-hidden .simple-site .hero-ambient * { animation-play-state: paused !important; }

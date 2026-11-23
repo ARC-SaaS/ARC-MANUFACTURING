@@ -4,12 +4,15 @@ import Home from '../app/page';
 import Privacy from '../app/privacy/page';
 import Terms from '../app/terms/page';
 import Contact from '../app/contact/page';
+import Subscription from '../app/subscription/page';
 import '../app/globals.css';
 import '../app/original-theme.css';
 import '../app/site-extras.css';
 import '../app/typography.css';
 import '../app/reload.css';
 import '../app/content-protection.css';
+import '../app/homepage.css';
+import '../app/ambient-background.css';
 import { installCopyProtection } from '../shared/copy-protection.mjs';
 
 installCopyProtection();
@@ -19,7 +22,8 @@ const path = location.pathname.replace(/\/$/, '');
 const Page = page === 'privacy' || /\/privacy(?:\.html)?$/.test(path)
   ? Privacy
   : page === 'terms' || /\/terms(?:\.html)?$/.test(path) ? Terms
-  : page === 'contact' || /\/contact(?:\.html)?$/.test(path) ? Contact : Home;
+  : page === 'contact' || /\/contact(?:\.html)?$/.test(path) ? Contact
+  : page === 'subscription' || /\/subscription(?:\.html)?$/.test(path) ? Subscription : Home;
 document.documentElement.classList.add('dark');
 function StandaloneApp() {
   // Replace the HTML loading screen only once React has committed its first frame.

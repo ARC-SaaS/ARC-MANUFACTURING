@@ -1,6 +1,6 @@
-.contact-intro{display:flex;align-items:center;gap:32px;margin:24px 0 40px}
+.contact-intro{margin:24px 0 40px}
 .contact-intro p{color:var(--arc-footer-muted,#b6c8cc);max-width:560px}
-.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.contact-grid{display:grid;grid-template-columns:minmax(0,560px);gap:24px}
 .contact-card{display:flex;flex-direction:column;align-items:flex-start;padding:28px;border:1px solid #254447;border-radius:12px;background:#0a181d;min-width:0}
 .simple-site .contact-card h2{font-size:24px;margin:16px 0 8px}
 .contact-card p{color:var(--arc-footer-muted,#b6c8cc)}
@@ -8,4 +8,4 @@
 .contact-card .site-primary,.contact-card .text-link{margin-top:auto;min-height:44px;text-decoration:none}
 .info-page.contact-page{padding-bottom:48px}
 .contact-detail:hover{color:#fff}
-@media(max-width:640px){.info-page.contact-page{padding-bottom:36px}.contact-intro{flex-direction:column;align-items:flex-start;gap:16px}.contact-grid{grid-template-columns:1fr}.contact-card{padding:24px}}
+@media(max-width:640px){.info-page.contact-page{padding-bottom:36px}.contact-grid{grid-template-columns:1fr}.contact-card{padding:24px}}

@@ -1,4 +1,5 @@
 import InfoPage from '@/components/info-page';
+import Link from 'next/link';
 export const metadata = {
   title: 'Page not found | ARC',
   robots: { index: false, follow: true },
@@ -11,9 +12,9 @@ export default function NotFound() {
         contact our team.
       </p>
       <p>
-        <a className="site-primary" href="/">
+        <Link className="site-primary" href="/">
           Back to ARC
-        </a>
+        </Link>
       </p>
     </InfoPage>
   );

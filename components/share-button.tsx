@@ -1,30 +1,46 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import site from '@/lib/site.json';
 import { getSiteOrigin } from '@/shared/site-config.mjs';
 export default function ShareButton() {
   const [message, setMessage] = useState('');
+  const dismissTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(
+    () => () => {
+      if (dismissTimer.current) clearTimeout(dismissTimer.current);
+    },
+    [],
+  );
+  function showMessage(nextMessage: string) {
+    if (dismissTimer.current) clearTimeout(dismissTimer.current);
+    setMessage(nextMessage);
+    dismissTimer.current = setTimeout(() => setMessage(''), 2200);
+  }
   function shareUrl() {
-    return getSiteOrigin(site.url) ||
-      (/^https?:$/.test(location.protocol) ? location.origin + location.pathname : '');
+    return (
+      getSiteOrigin(site.url) ||
+      (/^https?:$/.test(location.protocol)
+        ? location.origin + location.pathname
+        : '')
+    );
   }
   async function copyLink() {
     const url = shareUrl();
     if (!url) {
-      setMessage('Open the hosted website to share its link.');
+      showMessage('Open the hosted website to share its link.');
       return;
     }
     try {
       await navigator.clipboard.writeText(url);
-      setMessage('Link copied.');
+      showMessage('Link copied.');
     } catch {
-      setMessage('Copy the website address from your browser to share it.');
+      showMessage('Copy the website address from your browser to share it.');
     }
   }
   async function share() {
     const url = shareUrl();
     if (!url) {
-      setMessage('Open the hosted website to share its link.');
+      showMessage('Open the hosted website to share its link.');
       return;
     }
     try {
@@ -36,23 +52,40 @@ export default function ShareButton() {
         });
       else {
         await navigator.clipboard.writeText(url);
-        setMessage('Link copied.');
+        showMessage('Link copied.');
       }
     } catch (error) {
       if (!(error instanceof DOMException && error.name === 'AbortError'))
-        setMessage('Copy the website address from your browser to share it.');
+        showMessage('Copy the website address from your browser to share it.');
     }
   }
   return (
-    <span className="share-control">
-      <button type="button" onClick={share}>
+    <>
+      <button
+        className="footer-action"
+        type="button"
+        onClick={share}
+        aria-label="Share the ARC website"
+      >
         Share ARC
       </button>
-      {' · '}
-      <button type="button" onClick={copyLink}>
-        Copy link
-      </button>
-      <span aria-live="polite">{message}</span>
-    </span>
+      <span className="copy-control">
+        <button
+          className="footer-action"
+          type="button"
+          onClick={copyLink}
+          aria-label="Copy the ARC website link"
+        >
+          Copy link
+        </button>
+        <output
+          className={`share-toast${message ? ' is-visible' : ''}`}
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {message}
+        </output>
+      </span>
+    </>
   );
 }

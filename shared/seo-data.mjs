@@ -9,7 +9,6 @@ export function structuredData(site) {
       {
         '@type': 'Organization', '@id': `${origin}/#organization`,
         name: 'ARC', url: `${origin}/`, logo: `${origin}/arc-logo.png`,
-        email: 'saas@arc-ai.in', telephone: '+91-6380436024',
       },
       {
         '@type': 'WebSite', '@id': `${origin}/#website`,

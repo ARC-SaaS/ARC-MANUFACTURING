@@ -21,8 +21,8 @@ export default function Privacy() {
         <h2>About this notice</h2>
         <p>
           This notice covers the ARC website and its sample verification tool.
-          For questions about your information, contact{' '}
-          <a href="mailto:saas@arc-ai.in">saas@arc-ai.in</a>.
+          Questions about this notice can be sent to ARC using the business
+          contact details that will be published after confirmation.
         </p>
       </section>
       <section>
@@ -37,10 +37,10 @@ export default function Privacy() {
       <section>
         <h2>Contacting us</h2>
         <p>
-          Email and telephone links open your own email or calling application.
-          If you contact ARC, the information you choose to share is used to
-          respond to your enquiry. Your email or telephone provider also
-          processes that communication under its own terms.
+          Public email and telephone contact channels are being confirmed. Once
+          published, if you contact ARC, the information you choose to share is
+          used to respond to your enquiry. Your email or telephone provider
+          also processes that communication under its own terms.
         </p>
       </section>
       <section>

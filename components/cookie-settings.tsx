@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import Link from 'next/link';
 import site from '@/lib/site.json';
 const key = 'arc-cookie-choice-v1',
   eventName = 'arc-cookie-choice';
@@ -39,7 +40,7 @@ export default function CookieSettings() {
     consent = choice(saved);
   const [open, setOpen] = useState(false);
   const configured = /^G-[A-Z0-9]+$/.test(site.analyticsId);
-  const panel = useRef<HTMLElement>(null);
+  const panel = useRef<HTMLDialogElement>(null);
   const visible = open || (configured && consent === 'unknown');
   useEffect(() => {
     if (!visible) return;
@@ -118,7 +119,8 @@ export default function CookieSettings() {
         Cookie settings
       </button>
       {visible && (
-        <section
+        <dialog
+          open
           ref={panel}
           tabIndex={-1}
           className="cookie-panel"
@@ -137,7 +139,7 @@ export default function CookieSettings() {
               ? 'Optional Google Analytics helps us understand page visits. It stays off unless you accept.'
               : 'Optional analytics is currently disabled. We only save your choice in this browser.'}{' '}
             You can change your choice here at any time.{' '}
-            <a href="/privacy">Privacy policy</a>
+            <Link href="/privacy">Privacy policy</Link>
           </p>
           <div className="cookie-actions">
             <button type="button" onClick={() => save('rejected')}>
@@ -156,7 +158,7 @@ export default function CookieSettings() {
               Close
             </button>
           </div>
-        </section>
+        </dialog>
       )}
     </>
   );

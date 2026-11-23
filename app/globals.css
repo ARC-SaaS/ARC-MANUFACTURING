@@ -121,59 +121,6 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-.closing-section .text-link {
-  position: relative;
-  padding-bottom: 6px;
-  transition: color 220ms ease;
-}
-
-.closing-section .text-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 220ms ease;
-}
-
-.closing-section .text-link svg {
-  transition: transform 220ms ease;
-}
-
-.closing-section .text-link:is(:hover, :focus-visible) {
-  color: #c9b7fb;
-}
-
-.closing-section .text-link:is(:hover, :focus-visible)::after {
-  transform: scaleX(1);
-}
-
-.closing-section .text-link:is(:hover, :focus-visible) svg {
-  transform: translate(3px, -3px);
-}
-
-.closing-section .text-link:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 5px;
-  border-radius: 2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .closing-section .text-link,
-  .closing-section .text-link::after,
-  .closing-section .text-link svg {
-    transition: none;
-  }
-
-  .closing-section .text-link:is(:hover, :focus-visible) svg {
-    transform: none;
-  }
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -222,7 +169,6 @@ body {
 html.arc-page-hidden .site-main > section::before { animation-play-state: paused; }
 /* Footer follows the surrounding page palette and content alignment. */
 .simple-site .arc-footer{--footer-accent:var(--arc-teal,#b29acb);--footer-heading:var(--arc-blue,#e5dbea);--footer-muted:var(--arc-footer-muted,#a99ab5);--footer-border:var(--arc-footer-border,#29222f);background:transparent;color:var(--footer-muted);max-width:1320px;margin:0 auto;padding:0 54px 20px;font-family:inherit;font-size:16px;line-height:1.75}
-.arc-footer .footer-pulse{display:none}
 .footer-grid{border-top:1px solid var(--footer-border);padding-top:30px;display:grid;grid-template-columns:1.3fr .8fr .9fr 1fr;gap:32px;align-items:start}
 .footer-brand img{display:block;width:180px;max-width:100%;height:auto;object-fit:contain;margin:0 0 16px}
 .simple-site .footer-brand>p{color:var(--footer-muted);max-width:310px;margin:0 0 18px;font-size:14px;line-height:1.75}

@@ -1,5 +1,9 @@
 # ARC typography
 
+## Homepage composition
+
+The marketing homepage uses a deep near-black base with ARC teal as the primary signal, blue for record metadata, and violet for secondary status. Its hero pairs one concise product sentence with a clearly marked sample component passport. The About section may use an explicitly illustrative exhaust assembly workflow, but must not imply a real client, deployment or production result. Keep the sample traceability checker separate from live production data. Lower sections follow the real sequence from component identity through inspection, assembly and release. Use measured motion, restrained borders, and readable body text rather than decorative gradients or generic feature cards.
+
 Marketing layout: header, homepage and footer fill the viewport with 24px side gutters (16px on small phones). At desktop widths of 1024px and above, use --arc-desktop-left-inset: clamp(64px,9vw,160px) across the header, homepage, footer and shared InfoPage (Contact, Privacy and Terms). InfoPage is left aligned rather than centered, retaining its readable content width through a maximum outer width of calc(876px + var(--arc-desktop-left-inset)). Retain the 24px right gutter, original hero paragraph width and line break, and mobile layouts.
 
 Content protection: shared/copy-protection.mjs and app/content-protection.css own desktop copy/context-menu blocking and mobile selection/callout suppression across all routes and standalone exports. Preserve form editing, paste, touch scrolling and zoom. This is a copying deterrent, not access control.
@@ -18,7 +22,7 @@ Labels/legal eyebrows: 12px. Navigation/card text/footer: 14px. Body/buttons/for
 
 Light 300, medium 500, semibold 600 and bold 700 are available; normal prose uses 400. Verify homepage, privacy, terms and dialogs at narrow and desktop widths, including wrapping and overflow. Regenerate standalone HTML after changes.
 
-Reload screen: target 1 second from navigation (800ms display plus 200ms fade), with a matching CSS fallback. The logo artwork is cropped above its raster tagline and the exact tagline is rendered in bright white, bold Inter text in header, footer and loader, including the standalone first frame.
+Reload screen: target 1 second from navigation (800ms display plus 200ms fade), with a matching CSS fallback. Crop the logo artwork above its raster tagline and render the site descriptor as bright white, bold Inter text in header, footer and loader, including the standalone first frame. The approved site descriptor is “Part traceability · Quality control.”
 
 Favicon: preserve the full original ARC logo and tagline. Only brighten the artwork; never replace it with a monogram. Generate PNG, Apple and multi-size ICO assets from public/favicon-source.png; version metadata URLs to refresh browser caches.
 
@@ -34,4 +38,4 @@ Privacy and Terms pages share a compact reading scale: title 30px desktop / 24px
 
 Logo reference update: use public/arc-logo-reference.jpg exactly as supplied, crop only its outer canvas through the shared brand-art CSS frame, preserve the image's original tagline, and apply brightness(1.14). This supersedes the earlier live-text tagline treatment for header, footer, Contact and loading screen.
 
-Transparent logo update: public/arc-logo-transparent.png supersedes the black-backed JPG in all BrandLogo variants and standalone loading frames. Keep alpha transparency, original tagline, and the subtle brightness treatment.
+Transparent logo update: public/arc-logo-transparent.png supersedes the black-backed JPG in all BrandLogo variants and standalone loading frames. Keep alpha transparency and the subtle brightness treatment; crop its raster tagline and use the approved live site descriptor.

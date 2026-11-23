@@ -1,5 +1,5 @@
 # ARC
-A simple black, white, and purple webpage introducing automotive production automation.
+A simple black, white, and purple webpage introducing manufacturing production automation.
 
 ## Run locally
 Use Node.js 22.13+ and pnpm:
@@ -21,13 +21,13 @@ The original backend draft was set aside when the scope changed to a simple webp
 ## Implementation contracts
 
 - `app/page.tsx` is the maintained page. `ARC (3).html` is generated from it by `scripts/export-standalone.mjs` during `pnpm build`; do not edit the generated HTML separately. Both use the same validation and UI code.
-- Website text describes the ARC product vision. This repository implements the explanatory website and a fixed read-only sample, not the advertised factory/AI integrations. The existing wording and industries are retained intentionally.
+- Website text describes the ARC product vision. This repository implements the explanatory website and a fixed read-only sample, not live factory/AI integrations. Any exhaust workflow shown on the homepage is illustrative; no client or production results are claimed.
 - In this sample, a parent accepts one child, with the same product type, order, and P7 assembly stage. Numeric serial suffixes need not match. A001/B002 is valid. These are sample rules, not a configurable bill of materials.
 - Inspection status and relationship status are independent. B005 is PASSED and has a RESERVED relationship; both must be checked. Legacy assignment-like overall statuses are also blocked defensively.
 - Each required stage needs a latest PASS. Missing histories, invalid dates, or duplicate timestamps within a stage fail closed. Sample success wording is retained, but the result never authorizes physical work or changes assignments.
 - Unused backend/dashboard drafts have been removed. The website retains its read-only sample validation; repair and assembly transitions require a future backend design.
-- The LinkedIn label is informational until an approved company profile URL is supplied. No destination is guessed.
-- Theme, page wording, assets, architecture, and animation timings remain unchanged by the reliability fixes.
+- The LinkedIn destination is omitted until an approved company profile URL is supplied. No destination is guessed.
+- The existing visual theme, page copy, validation rules, and animation timings remain in place. The homepage is server rendered, with interactive controls isolated in client components; the loader uses the existing WebP asset.
 
 ## Site readiness
 
