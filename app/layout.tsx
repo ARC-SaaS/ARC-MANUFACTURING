@@ -1,11 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import './original-theme.css';
-import './site-extras.css';
 import './typography.css';
 import './content-protection.css';
-import './homepage.css';
-import './ambient-background.css';
 import ContentProtection from '../components/content-protection';
 import site from '../lib/site.json';
 import { pageMetadata } from '../lib/seo';
@@ -26,7 +23,6 @@ export default function RootLayout({
         className="antialiased"
       >
         <ContentProtection />
-        <a className="skip-link" href="#main-content">Skip to main content</a>
         {serializeStructuredData(site) && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(site) }} />}
         {children}
       </body>

@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 export default function SiteMotion() {
   useEffect(() => {
     const root = document.documentElement;
-    const ambient = document.querySelector<HTMLElement>('.site-hero');
     const header = document.querySelector<HTMLElement>('.site-header');
     const syncHeaderHeight = () => {
       if (header) root.style.setProperty('--arc-header-height', `${header.offsetHeight}px`);
@@ -19,7 +18,7 @@ export default function SiteMotion() {
     const pointer = matchMedia('(hover: hover) and (pointer: fine)');
     const reveals = Array.from(
       document.querySelectorAll<HTMLElement>(
-        '.hero-passport, .about-body > h2, .about-body > p, .principles > div, .about-case-study, .section-heading-simple, .process-steps article, .trace-copy, .trace-example, .faq-section > h2, .faq-section details, .closing-section, .footer-grid > *, .footer-bottom, .repair-note',
+        '.about-body > h2, .about-body > p, .principles > div, .section-heading-simple, .process-steps article, .trace-copy, .trace-example, .faq-section > h2, .faq-section > details, .closing-section, .footer-grid > *, .footer-bottom, .repair-note',
       ),
     );
     const targets = [
@@ -61,23 +60,6 @@ export default function SiteMotion() {
       visual?.style.removeProperty('--arc-pointer-y');
     };
     let pointerFrame = 0;
-    let ambientFrame = 0;
-    const clearAmbientPointer = () => {
-      cancelAnimationFrame(ambientFrame);
-      ambientFrame = 0;
-      ambient?.style.removeProperty('--hero-pointer-x');
-      ambient?.style.removeProperty('--hero-pointer-y');
-    };
-    const moveAmbientPointer = (event: PointerEvent) => {
-      if (!ambient || reduced.matches || !pointer.matches || document.hidden)
-        return;
-      cancelAnimationFrame(ambientFrame);
-      ambientFrame = requestAnimationFrame(() => {
-        const bounds = ambient.getBoundingClientRect();
-        ambient.style.setProperty('--hero-pointer-x', `${event.clientX - bounds.left}px`);
-        ambient.style.setProperty('--hero-pointer-y', `${event.clientY - bounds.top}px`);
-      });
-    };
     const movePointer = (event: PointerEvent) => {
       if (!visual || reduced.matches || !pointer.matches || document.hidden)
         return;
@@ -97,7 +79,6 @@ export default function SiteMotion() {
     };
     const syncPreferences = () => {
       leavePointer();
-      if (reduced.matches || !pointer.matches) clearAmbientPointer();
       updateScroll();
     };
     const syncVisibility = () => {
@@ -106,7 +87,6 @@ export default function SiteMotion() {
         cancelAnimationFrame(frame);
         frame = 0;
         leavePointer();
-        clearAmbientPointer();
       } else updateScroll();
     };
     updateScroll();
@@ -117,30 +97,24 @@ export default function SiteMotion() {
     pointer.addEventListener('change', syncPreferences);
     visual?.addEventListener('pointermove', movePointer);
     visual?.addEventListener('pointerleave', leavePointer);
-    window.addEventListener('pointermove', moveAmbientPointer, { passive: true });
-    window.addEventListener('pointerleave', clearAmbientPointer);
     return () => {
       observer.disconnect();
       headerObserver.disconnect();
       root.style.removeProperty('--arc-header-height');
       cancelAnimationFrame(frame);
       cancelAnimationFrame(pointerFrame);
-      cancelAnimationFrame(ambientFrame);
       window.removeEventListener('scroll', scheduleScroll);
       document.removeEventListener('visibilitychange', syncVisibility);
       reduced.removeEventListener('change', syncPreferences);
       pointer.removeEventListener('change', syncPreferences);
       visual?.removeEventListener('pointermove', movePointer);
       visual?.removeEventListener('pointerleave', leavePointer);
-      window.removeEventListener('pointermove', moveAmbientPointer);
-      window.removeEventListener('pointerleave', clearAmbientPointer);
       targets.forEach((element) => {
         element.classList.remove('arc-in-view', 'arc-reveal-visible');
         element.style.removeProperty('--arc-delay');
       });
       root.classList.remove('arc-scrolled', 'arc-page-hidden');
       resetPointer();
-      clearAmbientPointer();
     };
   }, []);
   return null;

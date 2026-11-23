@@ -10,18 +10,22 @@ export default function ReloadScreen() {
   useEffect(() => {
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     let cancelled = false;
+    let fade: ReturnType<typeof setTimeout>;
     let remove: ReturnType<typeof setTimeout>;
 
-    // Start the minimum display time after React mounts. performance.now() is
-    // navigation-relative and may already exceed this duration during hydration.
-    const fade = setTimeout(
-      () => {
-        if (cancelled) return;
-        setPhase('hidden');
-        remove = setTimeout(() => setPhase('done'), reduced ? 0 : 200);
-      },
-      reduced ? 0 : 800,
-    );
+    // Count startup time too, so React does not restart the loading delay.
+    const finish = () => {
+      if (cancelled) return;
+      fade = setTimeout(
+        () => {
+          setPhase('hidden');
+          remove = setTimeout(() => setPhase('done'), reduced ? 0 : 200);
+        },
+        reduced ? 0 : Math.max(0, 800 - performance.now()),
+      );
+    };
+
+    finish();
 
     return () => {
       cancelled = true;
