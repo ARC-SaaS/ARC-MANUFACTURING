@@ -17,6 +17,7 @@ import {
   Barcode,
   CircleCheck,
   Boxes,
+  ShieldCheck,
 } from 'lucide-react';
 
 const steps = [
