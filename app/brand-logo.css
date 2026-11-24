@@ -56,7 +56,11 @@
 }
 
 .brand-logo--footer .brand-tagline {
-  font-size: 10px;
+  font-size: 7.5px;
+  line-height: 1.2;
+  letter-spacing: 0.025em;
+  white-space: nowrap;
+  text-wrap: nowrap;
 }
 
 .brand-logo--loader {
